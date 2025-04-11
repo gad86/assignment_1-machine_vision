@@ -1,0 +1,47 @@
+import cv2
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Load the image
+my_id = cv2.imread(r"D:\College\machine\my id.jpg")
+my_id = cv2.cvtColor(my_id, cv2.COLOR_BGR2RGB)  # Convert to RGB for matplotlib
+
+# Get image dimensions
+h, w, _ = my_id.shape
+
+# Make a copy to draw on
+annotated_img = my_id.copy()
+
+# 1. Write your name
+name = "Abdelrahman"
+font = cv2.FONT_HERSHEY_SIMPLEX
+font_scale = 5
+thickness = 5
+text_size = cv2.getTextSize(name, font, font_scale, thickness)[0]
+text_x = 100
+text_y = h - 100
+cv2.putText(annotated_img, name, (text_x, text_y), font, font_scale, (255, 0, 0), thickness)
+
+# 2. Draw line under the name
+cv2.line(annotated_img, (text_x, text_y + 20), (text_x + text_size[0], text_y + 20), (0, 0, 255), 10)
+
+# 3. Draw circles in corners
+radius = 30
+thickness = 10
+cv2.circle(annotated_img, (80, 40), radius, (0, 0, 255), -1)
+cv2.circle(annotated_img, (w-80, 40), radius, (0, 0, 255), -1)
+cv2.circle(annotated_img, (80, h-40), radius, (0, 0, 255), -1)
+cv2.circle(annotated_img, (w-80, h-40), radius, (0, 0, 255), -1)
+
+# 4. Create figure with 4 subplots showing different transparencies
+alphas = [1.0, 0.75, 0.5, 0.25]
+fig, axs = plt.subplots(1, 4, figsize=(20, 5))
+
+for i, alpha in enumerate(alphas):
+    blended = cv2.addWeighted(annotated_img, alpha, np.ones_like(annotated_img) * 255, 1 - alpha, 0)
+    axs[i].imshow(blended.astype(np.uint8))
+    axs[i].set_title(f'Alpha = {alpha}')
+    axs[i].axis('off')
+
+plt.tight_layout()
+plt.show()
