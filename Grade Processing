@@ -1,0 +1,41 @@
+def evaluate_student(student_id):
+     try:
+        grades = students[student_id]["grades"]
+        average = sum(grades) / len(grades)
+        highest = max(grades)
+        lowest = min(grades)
+        status = "Pass" if average >= 60 else "Fail"
+        
+        return {
+            "Average": round(average, 2),
+            "Highest": highest,
+            "Lowest": lowest,
+            "Status": status
+        }
+    
+    except KeyError:
+        return "Student ID not found."
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
+
+
+
+students = {
+    "ST101": {
+        "name": "John Smith",
+        "age": 20,
+        "grades": [85, 90, 88]
+    },
+    "ST102": {
+        "name": "Jane Doe",
+        "age": 22,
+        "grades": [78, 82, 89]
+    }
+}
+
+
+
+
+result = evaluate_student("ST101")
+print(result)
+
