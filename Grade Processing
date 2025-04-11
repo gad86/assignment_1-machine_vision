@@ -1,5 +1,5 @@
 def evaluate_student(student_id):
-     try:
+    try:
         grades = students[student_id]["grades"]
         average = sum(grades) / len(grades)
         highest = max(grades)
@@ -19,7 +19,6 @@ def evaluate_student(student_id):
         return f"An error occurred: {str(e)}"
 
 
-
 students = {
     "ST101": {
         "name": "John Smith",
@@ -33,9 +32,5 @@ students = {
     }
 }
 
-
-
-
 result = evaluate_student("ST101")
 print(result)
-
