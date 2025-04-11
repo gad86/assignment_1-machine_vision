@@ -1,0 +1,23 @@
+# Creating the students dictionary
+students = {
+    "ST101": {
+        "name": "khaled yasser",
+        "age": 20,
+        "grades": [85, 90, 88]
+    },
+    "ST102": {
+        "name": "youssef tamer",
+        "age": 22,
+        "grades": [78, 82, 89]
+    },
+    "ST103": {
+        "name": "mohamed Hassan",
+        "age": 19,
+        "grades": [92, 88, 94]
+    },
+    "ST104": {
+        "name": "mouz sallam",
+        "age": 20,
+        "grades": [82, 95, 97]
+    }
+}
