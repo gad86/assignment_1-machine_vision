@@ -1,0 +1,15 @@
+import cv2
+import numpy as np
+
+# Create a black image
+img = np.zeros((512, 512, 3), np.uint8)
+
+# Draw the 3 rectangles
+cv2.rectangle(img, (100, 100), (150, 200), (0, 255, 0), 2)
+cv2.rectangle(img, (200, 200), (300, 300), (0, 255, 0), 2)
+cv2.rectangle(img, (250, 320), (400, 400), (0, 255, 0), 2)
+
+# Show the image
+cv2.imshow('Rectangles', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
