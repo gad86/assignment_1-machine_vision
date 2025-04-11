@@ -1,0 +1,14 @@
+def generate_student_report():
+    for student_id, info in students.items():
+        name = info["name"]
+        age = info["age"]
+        grades = info["grades"]
+        average = sum(grades) / len(grades)
+        status = "Pass" if average >= 60 else "Fail"
+        
+        print("Student ID: {student_id}")
+        print("Name       : {name}")
+        print("Age        : {age}")
+        print("Status     : {status}")
+
+generate_student_report()
